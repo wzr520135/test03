@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test03.mapper.SysUserRoleMapper">
+    <!--留着以后用  -->
+    <select id="findPermissions"
+            resultType="string">
+        select permission <!-- sys:user:update -->
+        from sys_menus
+        where id in
+        <foreach collection="menuIds"
+                 open="("
+                 close=")"
+                 separator=","
+                 item="item">
+            #{item}
+        </foreach>
+    </select>
+</mapper>
